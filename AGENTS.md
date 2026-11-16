@@ -31,4 +31,3 @@ use the editor.
 # AGENTS
 - Personal content (video, music, messages) lives in src/content/birthday.ts so it can be edited without touching components.
 - Hero image sits in a fixed-aspect box (container-type size) so the candle overlay uses cqw units to stay on the painted candle.
-- Guestbook writes go through a server function (zod + honeypot) using the publishable key; RLS allows only insert/select of published rows and a DB trigger enforces rate limits, so no service-role key is needed.

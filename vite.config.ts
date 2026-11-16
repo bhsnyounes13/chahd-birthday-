@@ -10,6 +10,12 @@
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
 export default defineConfig({
+  nitro: {
+    // Pin the Nitro target for builds made from this repo (e.g. a Vercel Git
+    // import or `vercel deploy`). Inside Lovable's own Cloud build
+    // LOVABLE_NITRO_PRESET still wins, so Lovable Cloud is unaffected.
+    preset: "vercel",
+  },
   tanstackStart: {
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
     // nitro/vite builds from this
