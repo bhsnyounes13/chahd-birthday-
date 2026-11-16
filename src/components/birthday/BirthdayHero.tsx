@@ -1,7 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { Mic, MicOff, Wind } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
-import scene from "@/assets/chahd-birthday-scene.png.asset.json";
+import sceneUrl from "@/assets/chahd-birthday-scene.png?url";
 import { BirthdayReveal } from "./BirthdayReveal";
 import { Confetti } from "./Confetti";
 import { FloatingParticles } from "./FloatingParticles";
@@ -59,7 +59,7 @@ export function BirthdayHero() {
         style={{ containerType: "size" }}
       >
         <motion.img
-          src={scene.url}
+          src={sceneUrl}
           alt="Purple lilies, a birthday cake with a glowing candle, a gift box and butterflies"
           className="absolute inset-0 h-full w-full"
           animate={{ filter: lit ? "brightness(1)" : "brightness(1.12) saturate(1.15)" }}
