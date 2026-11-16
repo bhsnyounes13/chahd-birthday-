@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Heart, Maximize, Pause, Play, Volume2, VolumeX } from "lucide-react";
 import { useRef, useState } from "react";
-import { videoPoster, videoSrc } from "@/content/birthday";
+import { videoIsVertical, videoPoster, videoSrc } from "@/content/birthday";
 import { FloatingParticles } from "./FloatingParticles";
 import { SectionHeading } from "./SectionHeading";
 
@@ -50,7 +50,7 @@ export function GirlsVideo() {
         whileInView={{ opacity: 1, scale: 1, y: 0 }}
         viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 1 }}
-        className="relative mx-auto mt-12 aspect-video w-full max-w-4xl overflow-hidden rounded-3xl border-2 border-lavender/70 bg-violet shadow-glow"
+        className={`relative mx-auto mt-12 w-full overflow-hidden ${videoSrc && videoIsVertical ? "aspect-[9/16] max-w-[min(24rem,45svh)]" : "aspect-video max-w-4xl"} rounded-3xl border-2 border-lavender/70 bg-violet shadow-glow`}
       >
         {videoSrc ? (
           <>

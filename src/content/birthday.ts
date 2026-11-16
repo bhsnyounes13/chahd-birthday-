@@ -4,8 +4,10 @@
  * - musicSrc: an MP3 path/URL. Leave "" to use the built-in soft music-box melody.
  * - messages: add, remove or edit cards freely.
  */
-export const videoSrc = "";
-export const videoPoster = "";
+export const videoSrc = "/videos/girls.mp4";
+export const videoPoster = "/videos/girls-poster.jpg";
+/** true for a phone-style vertical video, false for a wide one. */
+export const videoIsVertical = true;
 export const musicSrc = "/music/snowman.mp3";
 
 export type GirlMessage = { name: string; message: string; emoji?: string };

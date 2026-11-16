@@ -72,6 +72,32 @@ export function MusicPlayer() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // Pause the background song while a video plays, then resume it when the video stops.
+  useEffect(() => {
+    let resumeAfterVideo = false;
+    const onVideoPlay = (e: Event) => {
+      if (!(e.target instanceof HTMLVideoElement)) return;
+      if (audio.current && !audio.current.paused) {
+        resumeAfterVideo = true;
+        audio.current.pause();
+        setPlaying(false);
+      }
+    };
+    const onVideoStop = (e: Event) => {
+      if (!(e.target instanceof HTMLVideoElement) || !resumeAfterVideo) return;
+      resumeAfterVideo = false;
+      audio.current?.play().then(() => setPlaying(true)).catch(() => {});
+    };
+    document.addEventListener("play", onVideoPlay, true);
+    document.addEventListener("pause", onVideoStop, true);
+    document.addEventListener("ended", onVideoStop, true);
+    return () => {
+      document.removeEventListener("play", onVideoPlay, true);
+      document.removeEventListener("pause", onVideoStop, true);
+      document.removeEventListener("ended", onVideoStop, true);
+    };
+  }, []);
+
   const toggle = () => {
     setOpen(true);
     if (playing) {
