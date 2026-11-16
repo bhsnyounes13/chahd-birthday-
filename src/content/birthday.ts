@@ -12,33 +12,27 @@ export type GirlMessage = { name: string; message: string; emoji?: string };
 
 export const messages: GirlMessage[] = [
   {
-    name: "Friend One",
-    emoji: "🌸",
+    name: "Aridj",
+    emoji: "❤️",
     message:
-      "Write your birthday message for Chahd here. Share a wish, a feeling, or a reason she means so much to you. This card expands to show the full text, so it can be as long as your heart needs.",
+      "Happy birthday to my beautiful sister, my best friend, and my forever person. ❤️\nYou are one of the greatest blessings in my life, and I can’t imagine my world without you. No matter how old we get, you will always have a special place in my heart. I wish you all the happiness and love in the world, because you deserve it all.\nI love you more than words could ever say. Forever and always, my girl. 🥹💕",
   },
   {
-    name: "Friend Two",
-    emoji: "💜",
+    name: "Rania",
+    emoji: "🎂",
     message:
-      "Replace this sample with your own words. Tell Chahd what you wish for her this year and how grateful you are to have her in your life.",
+      "Happy Birthday to my beautiful friend ❤️🎂 I hope your day is filled with love, happiness, and unforgettable moments. You deserve all the best things in life. May all your dreams come true, and may this new year bring you endless joy, success, and beautiful memories. Never stop smiling and shining. I’m so lucky to have you in my life, Love you 💗✨",
   },
   {
-    name: "Friend Three",
-    emoji: "🦋",
+    name: "Imane",
+    emoji: "🧚🏻",
     message:
-      "Your personal message goes here. You can write in English or Arabic — Arabic text displays right-to-left automatically.",
+      "Happy birthday, my Hazel! 🧚🏻✨\nJe te souhaite tout le bonheur du monde, une vie remplie de belles surprises et de moments inoubliables 💗✨\nشكراً لأنك أنت ولأن وجودك يضيف جمالاً لأيامي\nI’m so lucky to have you as my binôme. Love you! 🫂❤️",
   },
   {
-    name: "Friend Four",
-    emoji: "✨",
+    name: "Dounia",
+    emoji: "🌙",
     message:
-      "A space for your sweetest birthday wish. Keep it short and sweet, or write a whole letter — both look beautiful.",
-  },
-  {
-    name: "Friend Five",
-    emoji: "🌷",
-    message:
-      "كل عام وأنتِ بخير يا شهد — اكتبي رسالتك هنا بدل هذا النص.",
+      "Happy birthday to my hunny ❤️ I hope this year brings you endless happiness, success, love, and everything your heart wishes for, I’m so grateful to have you in my life and I hope you know how special you are to me.\nMay we keep making beautiful memories, laughing over the smallest things, and staying by each other’s side through everything.\nYou deserve the world and so much more. Love you always 💜🌙",
   },
 ];

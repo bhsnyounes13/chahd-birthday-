@@ -2,7 +2,8 @@ import { motion } from "framer-motion";
 import { Flower2, X } from "lucide-react";
 import type { GirlMessage } from "@/content/birthday";
 
-const isArabic = (t: string) => /[\u0600-\u06FF]/.test(t);
+// Right-to-left only when the message starts in Arabic; mixed messages stay left-to-right.
+const isArabic = (t: string) => /^[^\p{L}]*[\u0600-\u06FF]/u.test(t);
 
 export function MessageCard({ item, open, onToggle, index }: { item: GirlMessage; open: boolean; onToggle: () => void; index: number }) {
   const ar = isArabic(item.message);
