@@ -48,6 +48,30 @@ export function MusicPlayer() {
     box.current?.setVolume(volume);
   }, [volume]);
 
+  const startSong = () => {
+    if (!audio.current) { audio.current = new Audio(musicSrc); audio.current.loop = true; }
+    audio.current.volume = volume;
+    audio.current.play().then(() => setPlaying(true)).catch(() => setPlaying(false));
+  };
+
+  // Browsers block sound until the visitor interacts, so start the song on the first tap/click/key anywhere.
+  const controls = useRef<HTMLDivElement | null>(null);
+  useEffect(() => {
+    if (!musicSrc) return;
+    const onFirst = (e: Event) => {
+      remove();
+      if (controls.current?.contains(e.target as Node)) return; // the music button handles itself
+      if (audio.current && !audio.current.paused) return;
+      setOpen(true);
+      startSong();
+    };
+    const events = ["pointerdown", "keydown", "touchstart"] as const;
+    const remove = () => events.forEach((n) => window.removeEventListener(n, onFirst));
+    events.forEach((n) => window.addEventListener(n, onFirst, { passive: true }));
+    return remove;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const toggle = () => {
     setOpen(true);
     if (playing) {
@@ -58,9 +82,7 @@ export function MusicPlayer() {
       return;
     }
     if (musicSrc) {
-      if (!audio.current) { audio.current = new Audio(musicSrc); audio.current.loop = true; }
-      audio.current.volume = volume;
-      audio.current.play().then(() => setPlaying(true)).catch(() => setPlaying(false));
+      startSong();
     } else {
       box.current = createMusicBox();
       box.current.setVolume(volume);
@@ -69,7 +91,7 @@ export function MusicPlayer() {
   };
 
   return (
-    <div className="fixed bottom-4 right-4 z-50 flex items-center gap-2">
+    <div ref={controls} className="fixed bottom-4 right-4 z-50 flex items-center gap-2">
       <AnimatePresence>
         {open && (
           <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 20 }} className="glass flex h-12 items-center rounded-full px-4">

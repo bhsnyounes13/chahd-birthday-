@@ -6,7 +6,7 @@
  */
 export const videoSrc = "";
 export const videoPoster = "";
-export const musicSrc = "";
+export const musicSrc = "/music/snowman.mp3";
 
 export type GirlMessage = { name: string; message: string; emoji?: string };
 
